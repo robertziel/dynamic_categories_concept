@@ -1,5 +1,15 @@
 # Dynamic Categories Example BACKEND
 
+## Custom fields
+
+There are following custom fields types:
+
+* BigDecimal
+* String
+* TextField
+
+And much more can be added if required.
+
 ## Set up locally
 
 1. Make sure you have proper **ruby** version installed, defined in [.ruby-version](.ruby-version)
@@ -31,4 +41,4 @@
   npm install
   ```
 
-2. Then you can commit your changes!
+3. Then you can commit your changes!

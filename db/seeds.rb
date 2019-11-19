@@ -30,3 +30,7 @@ apple = Category.find_or_create_by(title: 'Apple', category: mobile_phones)
 iphone = Category.find_or_create_by(title: 'iPhone', category: apple)
 
 nokia = Category.find_or_create_by(title: 'Nokia', category: mobile_phones)
+
+# CUSTOM FIELDS
+
+CustomField.find_or_create_by(title: 'name', type: STRING, category: all)
