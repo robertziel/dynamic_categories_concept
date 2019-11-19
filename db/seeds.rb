@@ -6,31 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-all = Category.find_or_create_by(title: 'All')
+all = Category.find_or_create_by(name: 'All')
 
-groceries = Category.find_or_create_by(title: 'Groceries', category: all)
+groceries = Category.find_or_create_by(name: 'Groceries', parent: all)
 
 # CARS
 
-cars = Category.find_or_create_by(title: 'Cars', category: all)
+cars = Category.find_or_create_by(name: 'Cars', parent: all)
 
-petrol_cars = Category.find_or_create_by(title: 'Petrol', category: cars)
-electric_cars = Category.find_or_create_by(title: 'Electric', category: cars)
+petrol_cars = Category.find_or_create_by(name: 'Petrol', parent: cars)
+electric_cars = Category.find_or_create_by(name: 'Electric', parent: cars)
 
-tesla = Category.find_or_create_by(title: 'Tesla', category: electric_cars)
+tesla = Category.find_or_create_by(name: 'Tesla', parent: electric_cars)
 
-opel = Category.find_or_create_by(title: 'Opel', category: petrol_cars)
-mercedes = Category.find_or_create_by(title: 'Mercedes', category: petrol_cars)
+opel = Category.find_or_create_by(name: 'Opel', parent: petrol_cars)
+mercedes = Category.find_or_create_by(name: 'Mercedes', parent: petrol_cars)
 
 # MOBILE PHONES
 
-mobile_phones = Category.find_or_create_by(title: 'Mobile phones', category: all)
+mobile_phones = Category.find_or_create_by(name: 'Mobile phones', parent: all)
 
-apple = Category.find_or_create_by(title: 'Apple', category: mobile_phones)
-iphone = Category.find_or_create_by(title: 'iPhone', category: apple)
+apple = Category.find_or_create_by(name: 'Apple', parent: mobile_phones)
+iphone = Category.find_or_create_by(name: 'iPhone', parent: apple)
 
-nokia = Category.find_or_create_by(title: 'Nokia', category: mobile_phones)
+nokia = Category.find_or_create_by(name: 'Nokia', parent: mobile_phones)
 
 # CUSTOM FIELDS
 
-CustomField.find_or_create_by(title: 'name', type: STRING, category: all)
+CustomField.find_or_create_by(name: 'All have it', datatype: CustomField::STRING, category: all)

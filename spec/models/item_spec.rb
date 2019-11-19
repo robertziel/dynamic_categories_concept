@@ -6,8 +6,8 @@ describe Item, type: :model do
   end
 
   describe 'validations' do
-    context '#title' do
-      it { should validate_presence_of(:title) }
+    context '#name' do
+      it { should validate_presence_of(:name) }
     end
 
     context '#description' do

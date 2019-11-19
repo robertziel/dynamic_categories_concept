@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_134252) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_134252) do
   create_table "custom_fields", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.string "name", null: false
-    t.string "type", null: false
+    t.string "datatype", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_custom_fields_on_category_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_134252) do
 
   create_table "items", force: :cascade do |t|
     t.bigint "category_id", null: false
-    t.string "title", null: false
+    t.string "name", null: false
     t.text "description", null: false
     t.decimal "price", precision: 8, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
