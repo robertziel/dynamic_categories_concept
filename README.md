@@ -2,6 +2,11 @@
 
 Frontend repository: https://github.com/robertziel/dynamic_categories_concept_client_react
 
+## About API
+
+* Grape API: `/api`
+* Swagger documentation: `/api/docs`
+
 ## Category
 
 One category can have multiple custom fields.
