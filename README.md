@@ -1,13 +1,18 @@
 # Dynamic Categories Example BACKEND
 
+## Category
+
+One category can have multiple custom fields.
+If category is assigned to parent category, it will inherit custom fields from parent.
+
 ## Custom fields
 
-Is always assigned to one category.
+Are always assigned to one category.
 There are following custom fields types:
 
-* BigDecimal
+* Boolean
+* Integer
 * String
-* TextField
 
 And much more can be added if required.
 
