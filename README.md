@@ -2,6 +2,7 @@
 
 ## Custom fields
 
+Is always assigned to one category.
 There are following custom fields types:
 
 * BigDecimal
@@ -9,6 +10,17 @@ There are following custom fields types:
 * TextField
 
 And much more can be added if required.
+
+## Item
+
+This is what we try to find while using this app.
+One can have different custom fields depending on category is assigned to.
+
+There are a few basic fields that each item has:
+
+* name
+* description
+* price
 
 ## Set up locally
 
