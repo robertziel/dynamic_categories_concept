@@ -16,6 +16,7 @@ gem 'puma', '~> 4.3.0'
 gem 'grape'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
+gem 'rack-cors'
 
 group :development do
   gem 'letter_opener'

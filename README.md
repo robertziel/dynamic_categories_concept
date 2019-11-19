@@ -34,6 +34,9 @@ There are a few basic fields that each item has:
 * description
 * price
 
+## ENV
+`CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
+
 ## Set up locally
 
 1. Make sure you have proper **ruby** version installed, defined in [.ruby-version](.ruby-version)
