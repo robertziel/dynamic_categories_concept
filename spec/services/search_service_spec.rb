@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe SearchService do
-  let!(:item) { create(:item, price: 3.4, name: 'test') }
+  let!(:item) { create(:item, price: 3.4, name: 'test', category: category) }
+  let!(:subcategory) { create :category_with_custom_fields, parent: category }
+  let!(:category) { create :category_with_custom_fields, parent: parent }
+  let!(:parent) { create :category_with_custom_fields }
 
   describe '#perform' do
     subject do
@@ -12,6 +15,20 @@ describe SearchService do
       let(:params) { { price: { from: '', to: '' }, name: '' } }
 
       it { expect(subject).to eq [item] }
+    end
+
+    describe '#category_id' do
+      context 'points to parent of category item belongs to' do
+        let(:params) { { category_id: parent.id } }
+
+        it { expect(subject).to eq [item] }
+      end
+
+      context 'points to subcategory of category item belongs to' do
+        let(:params) { { category_id: subcategory.id } }
+
+        it { expect(subject).to eq [] }
+      end
     end
 
     describe '#price_from' do

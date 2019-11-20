@@ -8,7 +8,6 @@ class SearchApi < Grape::API
         optional :from, type: Integer
         optional :to, type: Integer
       end
-      optional :price_to, type: BigDecimal
       # it needs better permit to regonize default fields
       optional :category_filters_values, type: Hash
     end
