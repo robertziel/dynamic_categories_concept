@@ -36,5 +36,9 @@ CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, c
 CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
 CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
 
-vectra = Item.find_or_create_by(name: 'Vectra', price: 1333.63, description: 'Description', category: opel)
-vectra = Item.find_or_create_by(name: 'Astra', price: 1633.63, description: 'Description', category: opel)
+vectra = Item.find_or_create_by(name: 'Opel Vectra', price: 1333.63, description: 'Description', category: opel)
+astra = Item.find_or_create_by(name: 'Opel Astra', price: 1633.63, description: 'Description', category: opel)
+mercedes = Item.find_or_create_by(name: 'Mercedes Benz', price: 5633.63, description: 'Description', category: mercedes)
+
+iphone_xr = Item.find_or_create_by(name: 'iphone XR', price: 633.63, description: 'Description', category: iphone)
+iphone_7s = Item.find_or_create_by(name: 'iphone 7S', price: 233.63, description: 'Description', category: iphone)
