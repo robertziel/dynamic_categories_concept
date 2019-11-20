@@ -1,6 +1,12 @@
 module Api
   class ItemSerializer < ApplicationSerializer
-    attributes :id, :price, :name, :description
+    include SerializersHelper
+
+    attributes :id, :price, :name, :description, :custom_fields
+
+    def custom_fields
+      serialize_collection(object.custom_field_values, serializer: CustomFieldValueSerializer)
+    end
 
     def price
       "#{object.price} $"

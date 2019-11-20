@@ -69,3 +69,8 @@ There are a few basic fields that each item has:
   ```
 
 3. Then you can commit your changes!
+
+
+## To do
+
+* Write specs for CustomFieldValue

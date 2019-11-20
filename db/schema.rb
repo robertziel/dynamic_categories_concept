@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_134252) do
+ActiveRecord::Schema.define(version: 2019_11_20_124231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_11_19_134252) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_categories_on_category_id"
+  end
+
+  create_table "custom_field_values", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "custom_field_id", null: false
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
+    t.index ["item_id"], name: "index_custom_field_values_on_item_id"
   end
 
   create_table "custom_fields", force: :cascade do |t|
@@ -43,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_134252) do
   end
 
   add_foreign_key "categories", "categories"
+  add_foreign_key "custom_field_values", "custom_fields"
+  add_foreign_key "custom_field_values", "items"
   add_foreign_key "custom_fields", "categories"
   add_foreign_key "items", "categories"
 end

@@ -31,10 +31,10 @@ nokia = Category.find_or_create_by(name: 'Nokia', parent: mobile_phones)
 
 # CUSTOM FIELDS
 
-CustomField.find_or_create_by(name: 'Country', datatype: CustomField::STRING, category: groceries)
-CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)
-CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
-CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
+country = CustomField.find_or_create_by(name: 'Country', datatype: CustomField::STRING, category: groceries)
+mileage = CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)
+year = CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
+system = CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
 
 vectra = Item.find_or_create_by(name: 'Opel Vectra', price: 1333.63, description: 'Description', category: opel)
 astra = Item.find_or_create_by(name: 'Opel Astra', price: 1633.63, description: 'Description', category: opel)
@@ -42,3 +42,15 @@ mercedes = Item.find_or_create_by(name: 'Mercedes Benz', price: 5633.63, descrip
 
 iphone_xr = Item.find_or_create_by(name: 'iphone XR', price: 633.63, description: 'Description', category: iphone)
 iphone_7s = Item.find_or_create_by(name: 'iphone 7S', price: 233.63, description: 'Description', category: iphone)
+
+
+CustomFieldValue.find_or_create_by(value: 'iOS 10', custom_field: system, item: iphone_xr)
+CustomFieldValue.find_or_create_by(value: 'iOS 9', custom_field: system, item: iphone_7s)
+
+CustomFieldValue.find_or_create_by(value: '1994', custom_field: year, item: vectra)
+CustomFieldValue.find_or_create_by(value: '1997', custom_field: year, item: astra)
+CustomFieldValue.find_or_create_by(value: '2013', custom_field: year, item: mercedes)
+
+CustomFieldValue.find_or_create_by(value: '159394', custom_field: mileage, item: vectra)
+CustomFieldValue.find_or_create_by(value: '51997', custom_field: mileage, item: astra)
+CustomFieldValue.find_or_create_by(value: '32013', custom_field: mileage, item: mercedes)
