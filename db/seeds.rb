@@ -8,11 +8,11 @@
 
 all = Category.find_or_create_by(name: 'All')
 
-groceries = Category.find_or_create_by(name: 'Groceries', parent: all)
+groceries = Category.find_or_create_by(name: 'Groceries')
 
 # CARS
 
-cars = Category.find_or_create_by(name: 'Cars', parent: all)
+cars = Category.find_or_create_by(name: 'Cars')
 
 petrol_cars = Category.find_or_create_by(name: 'Petrol', parent: cars)
 electric_cars = Category.find_or_create_by(name: 'Electric', parent: cars)
@@ -33,7 +33,7 @@ nokia = Category.find_or_create_by(name: 'Nokia', parent: mobile_phones)
 
 # CUSTOM FIELDS
 
-CustomField.find_or_create_by(name: 'Producer name', datatype: CustomField::STRING, category: all)
+CustomField.find_or_create_by(name: 'Country', datatype: CustomField::STRING, category: groceries)
 CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)
 CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
 CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
