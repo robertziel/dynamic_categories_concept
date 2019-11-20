@@ -34,3 +34,5 @@ nokia = Category.find_or_create_by(name: 'Nokia', parent: mobile_phones)
 # CUSTOM FIELDS
 
 CustomField.find_or_create_by(name: 'All have it', datatype: CustomField::STRING, category: all)
+
+CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)

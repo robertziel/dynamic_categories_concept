@@ -5,18 +5,18 @@ describe SearchApi do
   let!(:category) { create :category_with_custom_fields, parent: parent }
   let!(:parent) { create :category_with_custom_fields }
 
+  def check_response_json(expected_json)
+    subject
+
+    expect(response.status).to eq 200
+
+    json = JSON.parse(response.body, symbolize_names: true)
+    expect(json).to eq expected_json
+  end
+
   describe '#categories_list' do
     subject do
       get '/api/search/categories_list', params: params
-    end
-
-    def check_response_json(expected_json)
-      subject
-
-      expect(response.status).to eq 200
-
-      json = JSON.parse(response.body, symbolize_names: true)
-      expect(json).to eq expected_json
     end
 
     context 'when category_id null' do
@@ -64,6 +64,33 @@ describe SearchApi do
           parent_category: category.slice(:id, :name).symbolize_keys,
           subcategories: []
         )
+      end
+    end
+  end
+
+  describe '#category_filters' do
+    subject do
+      get '/api/search/category_filters', params: params
+    end
+
+    context 'when category_id null' do
+      let(:params) { {} }
+
+      it 'must return empty array' do
+        check_response_json(category_filters: [])
+      end
+    end
+
+    context 'when category_id is not null' do
+      let(:params) { { category_id: subcategory.id } }
+
+      it 'must return all inherited category filters' do
+        expected_category_filters =
+          subcategory.inherited_custom_fields_array.map do |custom_field|
+            custom_field.slice(:datatype, :id, :name).symbolize_keys
+          end
+
+        check_response_json(category_filters: expected_category_filters)
       end
     end
   end
