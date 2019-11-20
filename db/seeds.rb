@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-all = Category.find_or_create_by(name: 'All')
-
 groceries = Category.find_or_create_by(name: 'Groceries')
 
 # CARS
@@ -24,7 +22,7 @@ mercedes = Category.find_or_create_by(name: 'Mercedes', parent: petrol_cars)
 
 # MOBILE PHONES
 
-mobile_phones = Category.find_or_create_by(name: 'Mobile phones', parent: all)
+mobile_phones = Category.find_or_create_by(name: 'Mobile phones')
 
 apple = Category.find_or_create_by(name: 'Apple', parent: mobile_phones)
 iphone = Category.find_or_create_by(name: 'iPhone', parent: apple)
