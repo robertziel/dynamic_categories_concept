@@ -10,6 +10,7 @@ describe Api::ItemSerializer do
 
     it 'serializes item' do
       expect(subject).to match(
+        custom_fields: [],
         description: item.description,
         id: item.id,
         price: "#{item.price} $",
