@@ -35,3 +35,6 @@ CustomField.find_or_create_by(name: 'Country', datatype: CustomField::STRING, ca
 CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)
 CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
 CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
+
+vectra = Item.find_or_create_by(name: 'Vectra', price: 1333.63, description: 'Description', category: opel)
+vectra = Item.find_or_create_by(name: 'Astra', price: 1633.63, description: 'Description', category: opel)

@@ -9,20 +9,20 @@ describe SearchService do
     end
 
     context 'params not present' do
-      let(:params) { { price_from: '', price_to: '', name: '' } }
+      let(:params) { { price: { from: '', to: '' }, name: '' } }
 
       it { expect(subject).to eq [item] }
     end
 
     describe '#price_from' do
       context 'is higher than item\'s price' do
-        let(:params) { { price_from: '3.5', price_to: '', name: '' } }
+        let(:params) { { price: { from: '3.5', to: '' }, name: '' } }
 
         it { expect(subject).to eq [] }
       end
 
       context 'is lower than item\'s price' do
-        let(:params) { { price_from: '3.3', price_to: '', name: '' } }
+        let(:params) { { price: { from: '3.3', to: '' }, name: '' } }
 
         it { expect(subject).to eq [item] }
       end
@@ -30,13 +30,13 @@ describe SearchService do
 
     describe '#price_to' do
       context 'is higher than item\'s price' do
-        let(:params) { { price_from: '', price_to: '3.5', name: '' } }
+        let(:params) { { price: { from: '', to: '3.5' }, name: '' } }
 
         it { expect(subject).to eq [item] }
       end
 
       context 'is lower than item\'s price' do
-        let(:params) { { price_from: '', price_to: '3.3', name: '' } }
+        let(:params) { { price: { from: '', to: '3.3' }, name: '' } }
 
         it { expect(subject).to eq [] }
       end

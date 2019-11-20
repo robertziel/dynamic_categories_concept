@@ -3,8 +3,11 @@ class SearchApi < Grape::API
     desc 'Search'
     params do
       optional :category_id, type: Integer
-      optional :title, type: String
-      optional :price_from, type: BigDecimal
+      optional :name, type: String
+      optional :price, type: Hash do
+        optional :from, type: Integer
+        optional :to, type: Integer
+      end
       optional :price_to, type: BigDecimal
       # it needs better permit to regonize default fields
       optional :category_filters_values, type: Hash
