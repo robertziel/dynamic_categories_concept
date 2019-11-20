@@ -4,6 +4,8 @@ class Category < ApplicationRecord
   has_many :custom_fields
   has_many :items
 
+  scope :head_categories, -> { where(parent: nil) }
+
   def inherited_custom_fields_array
     custom_fields + (parent&.inherited_custom_fields_array || [])
   end
