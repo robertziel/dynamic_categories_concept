@@ -1,6 +1,8 @@
 class RootApi < Grape::API
   format :json
 
+  helpers SerializersHelper
+
   mount SearchApi
 
   add_swagger_documentation(

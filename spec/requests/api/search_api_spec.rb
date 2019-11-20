@@ -14,6 +14,18 @@ describe SearchApi do
     expect(json).to eq expected_json
   end
 
+  describe '#search' do
+    let!(:item) { create(:item) }
+
+    subject do
+      get '/api/search'
+    end
+
+    it 'must get index' do
+      check_response_json(items: serialize_collection([item], serializer: Api::ItemSerializer))
+    end
+  end
+
   describe '#categories_list' do
     subject do
       get '/api/search/categories_list', params: params
