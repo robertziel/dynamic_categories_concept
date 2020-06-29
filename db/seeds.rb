@@ -54,3 +54,5 @@ CustomFieldValue.find_or_create_by(value: '2013', custom_field: year, item: merc
 CustomFieldValue.find_or_create_by(value: '159394', custom_field: mileage, item: vectra)
 CustomFieldValue.find_or_create_by(value: '51997', custom_field: mileage, item: astra)
 CustomFieldValue.find_or_create_by(value: '32013', custom_field: mileage, item: mercedes)
+
+AdminUser.create(email: 's15922@pjwstk.edu.pl', password: '12345678') unless AdminUser.any?

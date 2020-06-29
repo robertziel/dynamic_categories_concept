@@ -11,6 +11,11 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'puma', '~> 4.3.0'
 
+# ADMIN
+
+gem 'devise'
+gem 'activeadmin'
+
 # API
 
 gem 'active_model_serializers'
