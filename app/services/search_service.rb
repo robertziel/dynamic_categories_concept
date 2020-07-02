@@ -41,14 +41,14 @@ class SearchService
       belongs_to_custom_field_sql = "custom_field_values.custom_field_id = #{custom_field.id}"
 
       case custom_field.datatype
-      when CustomField::INTEGER
+      when CustomField::FLOAT
 
         items = items.where(
-          "#{belongs_to_custom_field_sql} AND custom_field_values.value::INTEGER >= #{value[:from]}"
+          "#{belongs_to_custom_field_sql} AND custom_field_values.value::FLOAT >= #{value[:from]}"
         ) if value[:from].present?
 
         items = items.where(
-          "#{belongs_to_custom_field_sql}  AND custom_field_values.value::INTEGER <= #{value[:to]}"
+          "#{belongs_to_custom_field_sql}  AND custom_field_values.value::FLOAT <= #{value[:to]}"
         ) if value[:to].present?
 
       when CustomField::STRING

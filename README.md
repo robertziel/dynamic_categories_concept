@@ -17,7 +17,6 @@ If category is assigned to parent category, it will inherit custom fields from p
 Are always assigned to one category.
 There are following custom fields types:
 
-* Boolean
 * Integer
 * String
 

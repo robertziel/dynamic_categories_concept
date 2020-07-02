@@ -1,9 +1,8 @@
 class CustomField < ApplicationRecord
-  BOOLEAN = 'boolean'.freeze
-  INTEGER = 'integer'.freeze
+  FLOAT = 'float'.freeze
   STRING = 'string'.freeze
 
-  DATATYPES = [BOOLEAN, INTEGER, STRING].freeze
+  DATATYPES = [FLOAT, STRING].freeze
 
   belongs_to :category
   has_many :custom_field_values, dependent: :destroy

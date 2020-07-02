@@ -32,8 +32,8 @@ nokia = Category.find_or_create_by(name: 'Nokia', parent: mobile_phones)
 # CUSTOM FIELDS
 
 country = CustomField.find_or_create_by(name: 'Country', datatype: CustomField::STRING, category: groceries)
-mileage = CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::INTEGER, category: cars)
-year = CustomField.find_or_create_by(name: 'Year', datatype: CustomField::INTEGER, category: cars)
+mileage = CustomField.find_or_create_by(name: 'Mileage', datatype: CustomField::FLOAT, category: cars)
+year = CustomField.find_or_create_by(name: 'Year', datatype: CustomField::FLOAT, category: cars)
 system = CustomField.find_or_create_by(name: 'System', datatype: CustomField::STRING, category: mobile_phones)
 
 vectra = Item.find_or_create_by(name: 'Opel Vectra', price: 1333.63, description: 'Description', category: opel)
