@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-  permit_params :name, :category_id
+  permit_params :name, :category_id, custom_fields_attributes: %i[name datatype]
 
   index do
     selectable_column
@@ -9,6 +9,22 @@ ActiveAdmin.register Category do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :parent
+      row :created_at
+      row :updated_at
+    end
+    panel 'Custom fields' do
+      table_for category.custom_fields do
+        column :name
+        column :datatype
+      end
+    end
+    active_admin_comments
+  end
+
   filter :name
   filter :parent
 
@@ -16,6 +32,10 @@ ActiveAdmin.register Category do
     f.inputs do
       f.input :name
       f.input :parent
+      f.has_many :custom_fields, allow_destroy: true do |cf|
+        cf.input :name
+        cf.input :datatype, collection: CustomField::DATATYPES
+      end
     end
     f.actions
   end

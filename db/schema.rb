@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_212654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
+    t.index ["item_id", "custom_field_id"], name: "index_custom_field_values_on_item_id_and_custom_field_id", unique: true
     t.index ["item_id"], name: "index_custom_field_values_on_item_id"
   end
 
