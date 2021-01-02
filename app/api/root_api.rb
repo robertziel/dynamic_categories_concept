@@ -7,6 +7,7 @@ class RootApi < Grape::API
   namespace :auth do
     mount Auth::SignInApi
     mount Auth::SignOutApi
+    mount Auth::SignUpApi
   end
   mount SearchApi
 
