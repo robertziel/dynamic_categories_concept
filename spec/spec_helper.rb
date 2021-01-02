@@ -20,6 +20,7 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include SerializersHelper
+  config.include ResponseHelper
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

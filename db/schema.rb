@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_212654) do
+ActiveRecord::Schema.define(version: 2021_01_02_134650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 2020_06_28_212654) do
     t.index ["email"], name: "index_admin_users_on_email", unique: true
   end
 
+  create_table "authentication_tokens", force: :cascade do |t|
+    t.string "token", null: false
+    t.bigint "user_id", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "browser"
+    t.inet "ip", null: false
+    t.datetime "last_used_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["token"], name: "index_authentication_tokens_on_token", unique: true
+    t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id"
@@ -53,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_212654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
-    t.index ["item_id", "custom_field_id"], name: "index_custom_field_values_on_item_id_and_custom_field_id", unique: true
     t.index ["item_id"], name: "index_custom_field_values_on_item_id"
   end
 
@@ -76,6 +88,16 @@ ActiveRecord::Schema.define(version: 2020_06_28_212654) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "username", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "authentication_tokens", "users"
   add_foreign_key "categories", "categories"
   add_foreign_key "custom_field_values", "custom_fields"
   add_foreign_key "custom_field_values", "items"
